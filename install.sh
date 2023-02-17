@@ -40,7 +40,7 @@ if grep -q 'DXVK_HDR' ~/.bash_profile; then
     echo "export DXVK_HDR=1" >> .bash_profile
 fi
 sudo cp /usr/bin/gamescope-session /opt/rwfus/mount/upper/usr/bin/gamescope-session
-sudo sed -i "s/gamescope \\/gamescope --hdr-enabled \\/" /opt/rwfus/mount/upper/usr/bin/gamescope-session
+sudo sed -i 's/gamescope \\/gamescope --hdr-enabled \\/' /opt/rwfus/mount/upper/usr/bin/gamescope-session
 popd
 read -p "Please press enter to reboot."
 sudo reboot
