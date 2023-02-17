@@ -4,14 +4,14 @@ export GAMESCOPE_VERSION=3.11.52.beta2.r0.g2a09fbc-1
 
 
 # ----- DO NOT MODIFY BELOW THIS LINE -----
-pushd ~
+pushd ~ >/dev/null
 if ! command -v "rwfus" &>/dev/null; then
     echo "Installing rwfus."
-    git clone https://github.com/ValShaped/rwfus.git
-    pushd rwfus
+    git clone https://github.com/ValShaped/rwfus.git >/dev/null
+    pushd rwfus >/dev/null
     sudo ./rwfus -iI
-    popd
-    rm -r rwfus
+    popd >/dev/null
+    rm -rf ./rwfus >/dev/null
 fi
 echo "Extracting gamescope update..."
 mkdir gamescope
@@ -19,6 +19,7 @@ pushdir gamescope
 wget https://builds.garudalinux.org/repos/chaotic-aur/x86_64/gamescope-git-$GAMESCOPE_VERSION-x86_64.pkg.tar.zst
 tar --use-compress-program=unzstd -xvf ./gamescope-git-$GAMESCOPE_VERSION-x86_64.pkg.tar.zst
 echo "Creating uninstall script..."
+sudo mkdir -p /opt/rwfus/mount/upper/usr/bin >/dev/null
 sudo -s 'echo "#!/bin/sh" > /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo -s 'echo "echo Uninstalling HDRDeck..." >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo -s 'echo "pushd /opt/rwfus/mount/upper/" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
@@ -30,7 +31,7 @@ sudo -s 'echo "read -p \"Please press enter to reboot.\"" >> /opt/rwfus/mount/up
 sudo -s 'echo "sudo reboot" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo chmod 555 /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall
 echo "Installing gamescope update..."
-sudo rsync -a ./usr /opt/rwfus/mount/upper/usr
+sudo rsync -a ./usr /opt/rwfus/mount/upper/
 popd
 rm -r ./gamescope
 echo "Enabling HDR..."
