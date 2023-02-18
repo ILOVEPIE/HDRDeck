@@ -39,7 +39,7 @@ echo "Cleaning up our extracted gamescope files..."
 sudo rm -rf ./gamescope
 echo
 echo "Enabling HDR..."
-if grep -q 'DXVK_HDR' ~/.bash_profile; then
+if ! grep -q 'DXVK_HDR' ~/.bash_profile; then
     echo "export ENABLE_GAMESCOPE_WSI=1" >> .bash_profile
     echo "export DXVK_HDR=1" >> .bash_profile
 fi
