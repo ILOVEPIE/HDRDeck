@@ -12,3 +12,5 @@ To uninstall:
 ```sh
 hdrdeck_uninstall
 ```
+
+If you installed this before 13:31 PST on 02/18/2023 please uninstall and reinstall, there was a condition error in the installer which did not correctly create the right environment variables.
