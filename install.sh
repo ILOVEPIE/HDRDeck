@@ -26,7 +26,7 @@ echo "Creating uninstall script..."
 sudo sh -c 'echo "#!/bin/sh" > /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "echo Uninstalling HDRDeck..." >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "pushd /opt/rwfus/mount/upper/" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
-sudo sh -c 'find ./usr -exec echo sudo rm -r {} + >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
+sudo sh -c 'find ./usr -type f -exec echo sudo rm -r {} + >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "sudo rm ./usr/bin/gamescope-session" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "sudo rm ./usr/bin/hdrdeck_uninstall" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "popd" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
