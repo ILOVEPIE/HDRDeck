@@ -14,3 +14,9 @@ hdrdeck_uninstall
 ```
 
 If you installed this before 13:31 PST on 02/18/2023 please uninstall and reinstall, there was a condition error in the installer which did not correctly create the right environment variables.
+
+### Updates
+
+```
+15:00 PST 2/20/2023 - Updated gamescope version the script installs to 3.11.52.beta2.r1.g9600bba-1
+```
