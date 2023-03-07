@@ -18,6 +18,7 @@ If you installed this before 13:31 PST on 02/18/2023 please uninstall and reinst
 ### Updates
 
 ```
+20:35 PST 3/06/2023 - Updated gamescope version the script installs to 3.11.52.beta6.r6.g659e550-1
 12:15 PST 2/23/2023 - Updated gamescope version the script installs to 3.11.52.beta2.r2.ga3dc37f-1
 15:00 PST 2/20/2023 - Updated gamescope version the script installs to 3.11.52.beta2.r1.g9600bba-1
 ```
