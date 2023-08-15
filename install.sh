@@ -3,7 +3,6 @@
 export GAMESCOPE_VERSION=3.12.0.beta3.r31.g156660c-1
 
 
-
 # ----- DO NOT MODIFY BELOW THIS LINE -----
 pushd ~ >/dev/null
 if ! command -v "rwfus" &>/dev/null; then
@@ -41,8 +40,10 @@ sudo rm -rf ./gamescope
 echo
 echo "Enabling HDR..."
 if ! grep -q 'DXVK_HDR' ~/.bash_profile; then
-    echo "export ENABLE_GAMESCOPE_WSI=1" >> .bash_profile
-    echo "export DXVK_HDR=1" >> .bash_profile
+    echo "export ENABLE_GAMESCOPE_WSI=1" >> ~/.bash_profile
+    echo "export ENABLE_GAMESCOPE_WSI=1" >> ~/.profile
+    echo "export DXVK_HDR=1" >> ~/.bash_profile
+    echo "export DXVK_HDR=1" >> ~/.profile
 fi
 sudo cp /usr/bin/gamescope-session /opt/rwfus/mount/upper/usr/bin/gamescope-session
 sudo sed -i 's/gamescope \\/gamescope --hdr-enabled \\/' /opt/rwfus/mount/upper/usr/bin/gamescope-session
