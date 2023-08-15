@@ -1,6 +1,6 @@
 #!/bin/sh
 ## CONFIG
-export GAMESCOPE_VERSION=3.12.0.beta3.r31.g156660c-1
+export GAMESCOPE_VERSION=3.12.0.r7.gf2e925f-1
 
 
 # ----- DO NOT MODIFY BELOW THIS LINE -----
