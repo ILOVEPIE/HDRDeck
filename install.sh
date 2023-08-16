@@ -1,9 +1,4 @@
 #!/bin/sh
-## CONFIG
-export GAMESCOPE_VERSION=3.12.0.r7.gf2e925f-1
-
-
-# ----- DO NOT MODIFY BELOW THIS LINE -----
 pushd ~ >/dev/null
 if ! command -v "rwfus" &>/dev/null; then
     echo "Installing rwfus."
@@ -13,15 +8,22 @@ if ! command -v "rwfus" &>/dev/null; then
     popd >/dev/null
     rm -rf ./rwfus >/dev/null
 fi
-echo "Extracting gamescope update..."
-mkdir gamescope
-pushd gamescope
-wget https://builds.garudalinux.org/repos/chaotic-aur/x86_64/gamescope-git-$GAMESCOPE_VERSION-x86_64.pkg.tar.zst >/dev/null
-sudo tar --use-compress-program=unzstd -xvf ./gamescope-git-$GAMESCOPE_VERSION-x86_64.pkg.tar.zst >/dev/null
+echo "Building gamescope update..."
+git clone https://aur.archlinux.org/gamescope-git.git
+pushd gamescope-git
+sudo mkdir /opt/rwfus/mount/etc/ 2> /dev/null
+sudo sed -i "s/SigLevel *= Required DatabaseOptional/SigLevel = Never/" /etc/pacman.conf
+sudo pacman -S fakeroot autoconf automake bison debugedit flex gcc m4 make patch 
+fakroot -- bash -c "sudo pacman -S glibc vulkan-headers linux-api-headers wayland libxcb libx11 xorgproto libdrm pixman systemd libglvnd libinput mesa libxkbcommon xcb-util-renderutil xcb-util-errors xcb-util-wm libcap libxmu libxtst libxcomposite libxi libxfixes libxdamage libxrender libxres libxext libxxf86vm sdl2 seatd pipewire && makepkg -src && sudo pacman -R glibc linux-api-headers wayland libxcb libx11 xorgproto libdrm pixman systemd libglvnd libinput mesa libxkbcommon xcb-util-renderutil xcb-util-errors xcb-util-wm libcap libxmu libxtst libxcomposite libxi libxfixes libxdamage libxrender libxres libxext libxxf86vm sdl2 seatd pipewire vulkan-headers"
+sudo pacman -R fakeroot autoconf automake bison debugedit flex gcc m4 make patch
+mkdir tmp
+pushd tmp
+sudo tar --use-compress-program=unzstd -xvf ../gamescope-git-*-x86_64.pkg.tar.zst >/dev/null
 echo
 echo "Installing gamescope update..."
 sudo rsync -a ./usr /opt/rwfus/mount/upper/ >/dev/null
-echo
+popd
+popd
 echo "Creating uninstall script..."
 sudo sh -c 'echo "#!/bin/sh" > /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "echo Uninstalling HDRDeck..." >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
@@ -36,7 +38,7 @@ sudo chmod 555 /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall
 popd >/dev/null
 echo
 echo "Cleaning up our extracted gamescope files..."
-sudo rm -rf ./gamescope
+sudo rm -rf ./gamescope-git
 echo
 echo "Enabling HDR..."
 if ! grep -q 'DXVK_HDR' ~/.bash_profile; then
