@@ -17,7 +17,7 @@ sudo pacman -S fakeroot autoconf automake bison debugedit flex gcc m4 make patch
 sudo pacman -S glibc vulkan-headers linux-api-headers wayland libxcb libx11 xorgproto libdrm pixman systemd libglvnd libinput mesa libxkbcommon xcb-util-renderutil xcb-util-errors xcb-util-wm libcap libxmu libxtst libxcomposite libxi libxfixes libxdamage libxrender libxres libxext libxxf86vm sdl2 seatd pipewire
 makepkg -src
 sudo pacman -R fakeroot autoconf automake bison debugedit flex gcc m4 make patch
-find ./opt/rwfus/mount/upper/usr -type f -exec echo sudo rm -r {} + 
+find /opt/rwfus/mount/upper/usr -type f -exec echo sudo rm -r {} + 
 mkdir tmp
 pushd tmp
 sudo tar --use-compress-program=unzstd -xvf ../gamescope-git-*-x86_64.pkg.tar.zst >/dev/null
