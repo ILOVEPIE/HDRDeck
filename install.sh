@@ -37,7 +37,6 @@ sudo sh -c 'echo "popd" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "read -p \"Please press enter to reboot.\"" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo sh -c 'echo "sudo reboot" >> /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall'
 sudo chmod 555 /opt/rwfus/mount/upper/usr/bin/hdrdeck_uninstall
-popd >/dev/null
 echo
 echo "Cleaning up our extracted gamescope files..."
 sudo rm -rf ./gamescope-git
@@ -51,7 +50,6 @@ if ! grep -q 'DXVK_HDR' ~/.bash_profile; then
 fi
 sudo cp /usr/bin/gamescope-session /opt/rwfus/mount/upper/usr/bin/gamescope-session
 sudo sed -i 's/gamescope \\/gamescope --hdr-enabled \\/' /opt/rwfus/mount/upper/usr/bin/gamescope-session
-popd >/dev/null
 echo
 echo "To uninstall please run the command \"hdrdeck_uninstall\""
 read -p "Please press enter to reboot."
