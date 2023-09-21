@@ -1,3 +1,4 @@
+# This Repository is no longer nessisary, HDR support has been added in SteamOS 3.5
 # HDRDeck
 A script that adds HDR Support to the steam deck.
 
